@@ -1,0 +1,212 @@
+﻿{
+  "sectors": [
+    {
+      "id": 1,
+      "name": "Északi szektor",
+      "active": true
+    },
+    {
+      "id": 2,
+      "name": "Déli szektor",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Macskaház",
+      "active": true
+    }
+  ],
+  "kennels": [
+    {
+      "id": 101,
+      "sectorId": 1,
+      "animalType": "kutya",
+      "capacity": 3,
+      "active": true
+    },
+    {
+      "id": 102,
+      "sectorId": 1,
+      "animalType": "kutya",
+      "capacity": 2,
+      "active": true
+    },
+    {
+      "id": 201,
+      "sectorId": 2,
+      "animalType": "kutya",
+      "capacity": 4,
+      "active": true
+    },
+    {
+      "id": 301,
+      "sectorId": 3,
+      "animalType": "macska",
+      "capacity": 4,
+      "active": true
+    },
+    {
+      "id": 302,
+      "sectorId": 3,
+      "animalType": "macska",
+      "capacity": 3,
+      "active": false
+    }
+  ],
+  "caretakers": [
+    {
+      "id": 1,
+      "name": "Kovács Anna"
+    },
+    {
+      "id": 2,
+      "name": "Nagy Péter"
+    },
+    {
+      "id": 3,
+      "name": "Szabó Júlia"
+    }
+  ],
+  "animals": [
+    {
+      "id": 1,
+      "name": "Bodza",
+      "species": "kutya",
+      "breed": "keverék",
+      "age": 4,
+      "gender": "nőstény",
+      "intakeDate": "2026-03-12",
+      "status": "örökbefogadható",
+      "kennelId": 101
+    },
+    {
+      "id": 2,
+      "name": "Morzsi",
+      "species": "kutya",
+      "breed": "labrador keverék",
+      "age": 7,
+      "gender": "kan",
+      "intakeDate": "2026-04-02",
+      "status": "karanténban/kezelés alatt",
+      "kennelId": 102
+    },
+    {
+      "id": 3,
+      "name": "Zsömle",
+      "species": "kutya",
+      "breed": "vizsla keverék",
+      "age": 2,
+      "gender": "kan",
+      "intakeDate": "2026-05-18",
+      "status": "próbaidőn",
+      "kennelId": null
+    },
+    {
+      "id": 4,
+      "name": "Cirmi",
+      "species": "macska",
+      "breed": "házi rövidszőrű",
+      "age": 5,
+      "gender": "nőstény",
+      "intakeDate": "2025-11-21",
+      "status": "örökbe fogadott",
+      "kennelId": null,
+      "adoptionDate": "2026-01-15"
+    },
+    {
+      "id": 5,
+      "name": "Pötyi",
+      "species": "macska",
+      "breed": "házi rövidszőrű",
+      "age": 1,
+      "gender": "nőstény",
+      "intakeDate": "2026-06-09",
+      "status": "örökbefogadható",
+      "kennelId": 301
+    },
+    {
+      "id": 6,
+      "name": "Füge",
+      "species": "macska",
+      "breed": "cirmos",
+      "age": 3,
+      "gender": "kan",
+      "intakeDate": "2026-07-01",
+      "status": "örökbefogadható",
+      "kennelId": 301
+    }
+  ],
+  "healthRecords": [
+    {
+      "id": 1,
+      "animalId": 1,
+      "date": "2026-03-13",
+      "type": "általános vizsgálat",
+      "performedBy": "Dr. Tóth Márton"
+    },
+    {
+      "id": 2,
+      "animalId": 2,
+      "date": "2026-04-03",
+      "type": "oltás",
+      "performedBy": "Dr. Tóth Márton"
+    },
+    {
+      "id": 3,
+      "animalId": 5,
+      "date": "2026-06-10",
+      "type": "általános vizsgálat",
+      "performedBy": "Dr. Varga Eszter"
+    }
+  ],
+  "adopters": [
+    {
+      "id": 1,
+      "name": "Tóth Réka",
+      "email": "reka.toth@example.com",
+      "phone": "+36 30 123 4567"
+    },
+    {
+      "id": 2,
+      "name": "Farkas Bence",
+      "email": "bence.farkas@example.com",
+      "phone": "+36 20 234 5678"
+    },
+    {
+      "id": 3,
+      "name": "Kiss Dóra",
+      "email": "dora.kiss@example.com",
+      "phone": "+36 70 345 6789"
+    }
+  ],
+  "applications": [
+    {
+      "id": 1,
+      "animalId": 1,
+      "adopterId": 1,
+      "applicationDate": "2026-08-02",
+      "status": "elutasított"
+    },
+    {
+      "id": 2,
+      "animalId": 1,
+      "adopterId": 2,
+      "applicationDate": "2026-08-04",
+      "status": "elbírálás alatt"
+    },
+    {
+      "id": 3,
+      "animalId": 3,
+      "adopterId": 3,
+      "applicationDate": "2026-08-11",
+      "status": "elfogadott"
+    },
+    {
+      "id": 4,
+      "animalId": 4,
+      "adopterId": 1,
+      "applicationDate": "2025-12-20",
+      "status": "elfogadott"
+    }
+  ]
+}
