@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ShelterManagement.App.Models
 {
-    internal class CareTaker
+    public class Caretaker
     {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
     }
 }

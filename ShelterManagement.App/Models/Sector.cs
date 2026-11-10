@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ShelterManagement.App.Models
 {
-    internal class Sector
+    public class Sector
     {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public bool Active { get; set; }
     }
 }

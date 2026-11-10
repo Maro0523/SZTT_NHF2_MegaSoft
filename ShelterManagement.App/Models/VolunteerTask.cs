@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ShelterManagement.App.Models
 {
-    internal class VolunteerTask
+    public class VolunteerTask
     {
+        public int Id { get; set; }
+        public string Type { get; set; } = string.Empty;
+        public DateTime StartTime { get; set; }
+        public int DurationMinutes { get; set; }
+        public int? AnimalId { get; set; }
+        public int RequiredVolunteers { get; set; }
+        public List<int> AssignedVolunteerIds { get; set; } = new();
     }
 }

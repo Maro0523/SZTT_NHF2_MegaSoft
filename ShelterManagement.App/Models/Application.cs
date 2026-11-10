@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace ShelterManagement.App.Models
 {
-    internal class Application
+    public class Application
     {
+        public int Id { get; set; }
+        public int AnimalId { get; set; }
+        public int AdopterId { get; set; }
+        public string ApplicationDate { get; set; } = string.Empty;
+        public string Status { get; set; } = string.Empty;
     }
 }
