@@ -273,5 +273,92 @@ namespace ShelterManagement.App.Services
             }
             return count;
         }
+
+        // --- Statisztikak ---
+
+        public AnimalStatistics GetAnimalStatistics(DateOnly startDate, DateOnly endDate)
+        {
+            if (endDate < startDate)
+            {
+                throw new ArgumentException("A végdátum nem lehet korábbi, mint a kezdődátum!");
+            }
+
+            AnimalStatistics stats = new AnimalStatistics();
+            stats.IntakeBySpecies["kutya"] = 0;
+            stats.IntakeBySpecies["macska"] = 0;
+            stats.AdoptedBySpecies["kutya"] = 0;
+            stats.AdoptedBySpecies["macska"] = 0;
+
+            foreach (var animal in _data.Animals)
+            {
+                string species = animal.Species.ToLower();
+
+                if (DateOnly.TryParse(animal.IntakeDate, out DateOnly intakeDate))
+                {
+                    if (intakeDate >= startDate && intakeDate <= endDate)
+                    {
+                        if (!stats.IntakeBySpecies.ContainsKey(species))
+                        {
+                            stats.IntakeBySpecies[species] = 0;
+                        }
+                        stats.IntakeBySpecies[species]++;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(animal.AdoptionDate) &&
+                    DateOnly.TryParse(animal.AdoptionDate, out DateOnly adoptionDate))
+                {
+                    if (adoptionDate >= startDate && adoptionDate <= endDate)
+                    {
+                        if (!stats.AdoptedBySpecies.ContainsKey(species))
+                        {
+                            stats.AdoptedBySpecies[species] = 0;
+                        }
+                        stats.AdoptedBySpecies[species]++;
+                    }
+                }
+            }
+
+            return stats;
+        }
+
+        public List<VolunteerActivity> GetMostActiveVolunteers()
+        {
+            List<VolunteerActivity> result = new List<VolunteerActivity>();
+
+            foreach (var volunteer in _data.Volunteers)
+            {
+                int count = 0;
+                foreach (var task in _data.Tasks)
+                {
+                    if (task.AssignedVolunteerIds.Contains(volunteer.Id))
+                    {
+                        count++;
+                    }
+                }
+
+                VolunteerActivity activity = new VolunteerActivity();
+                activity.Volunteer = volunteer;
+                activity.CompletedTasksCount = count;
+                result.Add(activity);
+            }
+
+            // Csokkeno sorrend a teljesitett feladatok szama alapjan
+            result.Sort((a, b) => b.CompletedTasksCount.CompareTo(a.CompletedTasksCount));
+            return result;
+        }
     }
+
+    public class AnimalStatistics
+    {
+        public Dictionary<string, int> IntakeBySpecies { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> AdoptedBySpecies { get; set; } = new Dictionary<string, int>();
+    }
+
+    public class VolunteerActivity
+    {
+        public Volunteer Volunteer { get; set; } = new Volunteer();
+        public int CompletedTasksCount { get; set; }
+    }
+
 }
