@@ -1,6 +1,7 @@
 ﻿using System;
 using ShelterManagement.App.Models;
 using ShelterManagement.App.Services;
+using ShelterManagement.App.UI;
 
 namespace ShelterManagement.App;
 
@@ -80,13 +81,8 @@ class Program
 
     private static void RunAdminMenu()
     {
-        Console.Clear();
-        Console.WriteLine("--- ADMINISZTRÁTORI MENÜ ---"); //Ez a 2. tag modulja
-        Console.WriteLine("1. Szektorok és kenelek kezelése");
-        Console.WriteLine("2. Menhely működési statisztikák");
-        Console.WriteLine("3. Legaktívabb önkéntesek listája");
-        Console.WriteLine("0. Vissza a főmenübe");
-        Pause();
+        AdminMenu adminMenu = new AdminMenu(_data);
+        adminMenu.Run();
     }
 
     private static void SelectCaretaker()
