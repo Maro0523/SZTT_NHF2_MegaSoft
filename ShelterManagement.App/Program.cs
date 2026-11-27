@@ -108,18 +108,10 @@ class Program
         }
     }
 
-    private static void RunCaretakerMenu(Caretaker caretaker)
+   private static void RunCaretakerMenu(Caretaker caretaker)
     {
-        Console.Clear();
-        Console.WriteLine($"--- GONDOZÓI FELÜLET: {caretaker.Name} ---"); //Ez a 3. tag modulja
-        Console.WriteLine("1. Új állat rögzítése és elhelyezése");
-        Console.WriteLine("2. Állat adatainak vagy státuszának módosítása");
-        Console.WriteLine("3. Egészségügyi bejegyzés rögzítése");
-        Console.WriteLine("4. Örökbefogadási jelentkezések elbírálása");
-        Console.WriteLine("5. Próbaidő lezárása");
-        Console.WriteLine("6. Önkéntes feladat meghirdetése vagy kezelése");
-        Console.WriteLine("0. Vissza a főmenübe");
-        Pause();
+        CaretakerMenu caretakerMenu = new CaretakerMenu(_data, caretaker);
+        caretakerMenu.Run();
     }
 
     private static void SelectAdopter()
@@ -147,12 +139,8 @@ class Program
 
     private static void RunAdopterMenu(Adopter adopter)
     {
-        Console.Clear();
-        Console.WriteLine($"--- ÖRÖKBEFOGADÓI FELÜLET: {adopter.Name} ---"); //Ez a 3. tag modulja
-        Console.WriteLine("1. Állatok megtekintése és összetett keresés (faj, kor, név)");
-        Console.WriteLine("2. Örökbefogadási szándék vagy jelentkezés leadása");
-        Console.WriteLine("0. Vissza a főmenübe");
-        Pause();
+        AdopterMenu adopterMenu = new AdopterMenu(_data, adopter);
+        adopterMenu.Run();
     }
 
     private static void RunVolunteerMenu()
